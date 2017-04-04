@@ -2,6 +2,8 @@ package br.com.wplex.resource.impl;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -73,7 +75,7 @@ public class GarageResourceImpl implements GarageResource {
 	@Override
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
 	public ResponseEntity<Garage> create(
-			@ApiParam(value = "Garage json stream resource", name = "garage", required = true) @RequestBody Garage garage) {
+			@ApiParam(value = "Garage json stream resource", name = "garage", required = true) @Valid @RequestBody Garage garage) {
 		Garage persisted = service.insert(garage);
 
 		if (null == persisted)
@@ -90,7 +92,7 @@ public class GarageResourceImpl implements GarageResource {
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Garage> update(@ApiParam(value = "Garage Id", required = true) @PathVariable("id") Long id,
-			@ApiParam(value = "Garage json stream resource", required = true) @RequestBody Garage garage) {
+			@ApiParam(value = "Garage json stream resource", required = true) @Valid @RequestBody Garage garage) {
 		Garage persisted = service.update(id, garage);
 
 		if (null == persisted)

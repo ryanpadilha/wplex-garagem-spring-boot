@@ -18,6 +18,8 @@
   "host" : "localhost:8080",
   "tags" : [ {
     "name" : "company"
+  }, {
+    "name" : "garage"
   } ],
   "schemes" : [ "http" ],
   "paths" : {
@@ -44,13 +46,13 @@
       },
       "post" : {
         "tags" : [ "company" ],
-        "summary" : "Create a company entity",
+        "summary" : "Create a company resource",
         "description" : "",
         "operationId" : "create",
         "parameters" : [ {
           "in" : "body",
           "name" : "company",
-          "description" : "Company json stream entity",
+          "description" : "Company json stream resource",
           "required" : true,
           "schema" : {
             "$ref" : "#/definitions/Company"
@@ -58,13 +60,13 @@
         } ],
         "responses" : {
           "201" : {
-            "description" : "Create a new company entity",
+            "description" : "Create a new company resource",
             "schema" : {
               "$ref" : "#/definitions/Company"
             }
           },
           "304" : {
-            "description" : "Return a entity not modified",
+            "description" : "Return a resource not modified",
             "schema" : {
               "$ref" : "#/definitions/Company"
             }
@@ -100,7 +102,7 @@
       },
       "put" : {
         "tags" : [ "company" ],
-        "summary" : "Update a company entity",
+        "summary" : "Update a company resource",
         "description" : "",
         "operationId" : "update",
         "parameters" : [ {
@@ -113,7 +115,7 @@
         }, {
           "in" : "body",
           "name" : "body",
-          "description" : "Company json stream entity",
+          "description" : "Company json stream resource",
           "required" : true,
           "schema" : {
             "$ref" : "#/definitions/Company"
@@ -121,7 +123,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Retrieve an update a company entity",
+            "description" : "Retrieve an update a company resource",
             "schema" : {
               "$ref" : "#/definitions/Company"
             }
@@ -133,7 +135,7 @@
       },
       "delete" : {
         "tags" : [ "company" ],
-        "summary" : "Delete a company entity",
+        "summary" : "Delete a company resource",
         "description" : "",
         "operationId" : "delete",
         "parameters" : [ {
@@ -146,9 +148,145 @@
         } ],
         "responses" : {
           "204" : {
-            "description" : "No contente retive, company deleted",
+            "description" : "No content retrive, deleted company resource",
             "schema" : {
               "$ref" : "#/definitions/Company"
+            }
+          },
+          "404" : {
+            "description" : "Not found retrieve if no delete was process"
+          }
+        }
+      }
+    },
+    "/api/v1/garage" : {
+      "get" : {
+        "tags" : [ "garage" ],
+        "summary" : "Retrieves a list of garages",
+        "description" : "",
+        "operationId" : "list",
+        "responses" : {
+          "200" : {
+            "description" : "Retrieves a list of garages",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Garage"
+              }
+            }
+          },
+          "204" : {
+            "description" : "No content retrieve"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "garage" ],
+        "summary" : "Create a garage resource",
+        "description" : "",
+        "operationId" : "create",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "garage",
+          "description" : "Garage json stream resource",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Garage"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Create a new garage resource",
+            "schema" : {
+              "$ref" : "#/definitions/Garage"
+            }
+          },
+          "304" : {
+            "description" : "Return a resource not modified",
+            "schema" : {
+              "$ref" : "#/definitions/Garage"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/garage/{id}" : {
+      "get" : {
+        "tags" : [ "garage" ],
+        "summary" : "Get a garage by id",
+        "description" : "",
+        "operationId" : "get",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Garage Id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retrieve a garage searched by id",
+            "schema" : {
+              "$ref" : "#/definitions/Garage"
+            }
+          },
+          "404" : {
+            "description" : "Not found retrieve searched by id"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "garage" ],
+        "summary" : "Update a garage resource",
+        "description" : "",
+        "operationId" : "update",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Garage Id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Garage json stream resource",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Garage"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Retrieve an updage garage resource",
+            "schema" : {
+              "$ref" : "#/definitions/Garage"
+            }
+          },
+          "404" : {
+            "description" : "Not found retrieve if no update was process"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "garage" ],
+        "summary" : "Delete a garage resource",
+        "description" : "",
+        "operationId" : "delete",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Garage Id",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "No content retrieve, deleted garage resource",
+            "schema" : {
+              "$ref" : "#/definitions/Garage"
             }
           },
           "404" : {
@@ -180,6 +318,30 @@
           "type" : "string",
           "minLength" : 0,
           "maxLength" : 5
+        }
+      }
+    },
+    "Garage" : {
+      "type" : "object",
+      "required" : [ "created", "initials", "name" ],
+      "properties" : {
+        "created" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "name" : {
+          "type" : "string",
+          "minLength" : 0,
+          "maxLength" : 100
+        },
+        "initials" : {
+          "type" : "string",
+          "minLength" : 0,
+          "maxLength" : 5
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
         }
       }
     }

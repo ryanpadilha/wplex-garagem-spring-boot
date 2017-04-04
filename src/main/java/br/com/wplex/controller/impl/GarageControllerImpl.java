@@ -43,7 +43,7 @@ public class GarageControllerImpl implements GarageController {
 	}
 
 	@Override
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("GarageList");
 
@@ -65,9 +65,10 @@ public class GarageControllerImpl implements GarageController {
 	}
 
 	@Override
-	@RequestMapping(value = "create", method = RequestMethod.POST)
+	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
 	public ModelAndView create(Garage garage) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/garage/list");
+		ModelAndView modelAndView = new ModelAndView("redirect:/garage/");
+
 		service.insert(garage);
 		return modelAndView;
 	}

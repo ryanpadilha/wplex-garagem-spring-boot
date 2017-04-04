@@ -24,20 +24,18 @@ public class GarageServiceImpl implements GarageService {
 
 	@Override
 	public List<Garage> list() {
-		List<Garage> garages = repository.findAll();
-		return garages;
+		return repository.findAll();
 	}
 
 	@Override
 	public Garage get(Long id) {
-		Garage garage = repository.findOne(id);
-		return garage;
+		return repository.findOne(id);
 	}
 
 	@Override
 	public Garage insert(Garage garage) {
-		Garage persisted = repository.save(garage);
-		return persisted;
+		garage.setInitials(garage.getInitials().toUpperCase());
+		return repository.save(garage);
 	}
 
 	@Override
@@ -48,7 +46,7 @@ public class GarageServiceImpl implements GarageService {
 			return null;
 
 		persisted.setName(garage.getName());
-		persisted.setInitials(garage.getInitials());
+		persisted.setInitials(garage.getInitials().toUpperCase());
 
 		return repository.save(persisted);
 	}

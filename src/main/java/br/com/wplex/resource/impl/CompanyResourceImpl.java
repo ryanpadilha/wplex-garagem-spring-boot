@@ -2,16 +2,23 @@ package br.com.wplex.resource.impl;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.wplex.commons.WebServiceError;
 import br.com.wplex.model.entity.Company;
 import br.com.wplex.resource.CompanyResource;
 import br.com.wplex.service.CompanyService;
@@ -70,11 +77,13 @@ public class CompanyResourceImpl implements CompanyResource {
 	@ApiOperation(value = "Create a company resource", tags = { "company" }, code = 201)
 	@ApiResponses(value = {
 			@ApiResponse(code = 201, message = "Create a new company resource", response = Company.class),
-			@ApiResponse(code = 304, message = "Return a resource not modified", response = Company.class) })
+			@ApiResponse(code = 304, message = "Return a resource not modified", response = Company.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Void.class) })
 	@Override
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
 	public ResponseEntity<Company> create(
-			@ApiParam(value = "Company json stream resource", name = "company", required = true) @RequestBody Company company) {
+			@ApiParam(value = "Company json stream resource", name = "company", required = true) @Valid @RequestBody Company company) {
+
 		Company persisted = service.insert(company);
 
 		if (null == persisted)
@@ -87,11 +96,12 @@ public class CompanyResourceImpl implements CompanyResource {
 	@ApiOperation(value = "Update a company resource", tags = { "company" }, code = 200)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Retrieve an update a company resource", response = Company.class),
-			@ApiResponse(code = 404, message = "Not found retrieve if no update was process", response = Void.class) })
+			@ApiResponse(code = 404, message = "Not found retrieve if no update was process", response = Void.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Company> update(@ApiParam(value = "Company Id", required = true) @PathVariable("id") Long id,
-			@ApiParam(value = "Company json stream resource", required = true) @RequestBody Company company) {
+			@ApiParam(value = "Company json stream resource", required = true) @Valid @RequestBody Company company) {
 		Company persisted = service.update(id, company);
 
 		if (null == persisted)
@@ -114,6 +124,17 @@ public class CompanyResourceImpl implements CompanyResource {
 			return new ResponseEntity<Company>(HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<Company>(HttpStatus.NO_CONTENT);
+	}
+
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ResponseBody
+	public ResponseEntity<WebServiceError> handleValidationException(MethodArgumentNotValidException e) {
+		List<ObjectError> errors = e.getBindingResult().getAllErrors();
+
+		WebServiceError webServiceError = WebServiceError.build(WebServiceError.Type.VALIDATION_ERROR,
+				errors.get(0).getObjectName() + " " + errors.get(0).getDefaultMessage());
+
+		return new ResponseEntity<>(webServiceError, HttpStatus.BAD_REQUEST);
 	}
 
 }

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>WPLEX Garagem | Spring Boot Application</title>
-
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,13 +42,15 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">WPLEX Garagem</a>
+					<a class="navbar-brand" href="http://wplex.com.br" target="_wplex">
+						<img src="/images/logo-wplex.png" width="141" height="23"/>
+					</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="http://research-labs:8080/wplex-garagem/company/list">Empresa</a></li>
-						<li><a href="http://research-labs:8080/wplex-garagem/garage/list">Garagem</a></li>
-						<li><a href="#">Consulta</a></li>
+						<li><a th:href="@{/company/}">Empresa</a></li>
+						<li><a th:href="@{/garage/}">Garagem</a></li>
+						<li><a th:href="@{/search/}">Consulta</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="https://github.com/ryanpadilha" target="_github">Ryan Padilha <span
@@ -63,31 +64,21 @@
 
 		<!-- Main component for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<p>
-				<a class="btn btn-default" href="http://research-labs:8080/wplex-garagem/company/list" role="button">Voltar</a>
-			</p>
-
 			<h3 class="sub-header">Cadastro de Empresa</h3>
-			<form class="form-inline" method="POST" th:object="${company}"
-				th:action="@{/company/create}" style="margin: 20px 0">
-
+			<form method="POST" th:object="${company}" th:action="@{/company/}" style="margin: 20px 0">
 				<div class="form-group">
-					<input type="text" class="form-control" maxlength="5" placeholder="Sigla"
-						th:field="*{initials}" />
+					<input type="text" class="form-control" maxlength="5" placeholder="Sigla" required="required" th:field="*{initials}" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" maxlength="100" placeholder="Nome"
-						th:field="*{name}" />
+					<input type="text" class="form-control" maxlength="100" placeholder="Nome" required="required" th:field="*{name}" />
 				</div>
 				<div class="form-group">
+					<a class="btn btn-default" th:href="@{/company/}" role="button">Voltar</a>
 					<button type="submit" class="btn btn-primary">Salvar</button>
 				</div>
 			</form>
 		</div>
-
 	</div>
-	<!-- /container -->
-
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

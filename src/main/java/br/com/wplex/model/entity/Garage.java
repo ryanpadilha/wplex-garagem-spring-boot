@@ -13,6 +13,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * The Garage Entity Model.
  * 
@@ -34,11 +36,11 @@ public class Garage implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created = new Date();
 
-	@NotNull
+	@NotEmpty(message = "Nome deve ser informado.")
 	@Size(max = 100)
 	private String name;
 
-	@NotNull
+	@NotEmpty(message = "Sigla deve ser informada.")
 	@Size(max = 5)
 	private String initials;
 

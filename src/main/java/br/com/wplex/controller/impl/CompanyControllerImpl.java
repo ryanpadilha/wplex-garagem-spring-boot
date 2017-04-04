@@ -37,7 +37,7 @@ public class CompanyControllerImpl implements CompanyController {
 	}
 
 	@Override
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("CompanyList");
 
@@ -59,9 +59,9 @@ public class CompanyControllerImpl implements CompanyController {
 	}
 
 	@Override
-	@RequestMapping(value = "create", method = RequestMethod.POST)
+	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
 	public ModelAndView create(Company company) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/company/list");
+		ModelAndView modelAndView = new ModelAndView("redirect:/company/");
 
 		service.insert(company);
 		return modelAndView;

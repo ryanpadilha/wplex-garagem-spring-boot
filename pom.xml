@@ -7,8 +7,8 @@
 	<artifactId>wplex-garagem</artifactId>
 	<version>0.0.1</version>
 
-	<!-- 2. change de jar packing to war to deploy a webapp -->
-	<packaging>war</packaging>
+	<!-- 2. change de jar packing to war to deploy a webapp :: war -->
+	<packaging>jar</packaging>
 
 	<name>wplex-garagem</name>
 	<description>WPLEX Garage Project. Spring Boot Application</description>
@@ -55,12 +55,14 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- 
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-tomcat</artifactId>
 				</exclusion>
 			</exclusions>
+			 -->
 		</dependency>
 
 		<dependency>
@@ -97,9 +99,11 @@
 
 	<build>
 		<plugins>
-			<!-- 1. commnet spring-boot-maven-plugin to generate a war -->
-			<!-- <plugin> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> 
-				</plugin> -->
+			<!-- 1. commnet spring-boot-maven-plugin to generate a war (optional **) -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

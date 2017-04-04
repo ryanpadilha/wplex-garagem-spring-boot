@@ -24,20 +24,18 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public List<Company> list() {
-		List<Company> companies = repository.findAll();
-		return companies;
+		return repository.findAll();
 	}
 
 	@Override
 	public Company get(Long id) {
-		Company company = repository.findOne(id);
-		return company;
+		return repository.findOne(id);
 	}
 
 	@Override
 	public Company insert(Company company) {
-		Company persisted = repository.save(company);
-		return persisted;
+		company.setInitials(company.getInitials().toUpperCase());
+		return repository.save(company);
 	}
 
 	@Override
@@ -48,7 +46,7 @@ public class CompanyServiceImpl implements CompanyService {
 			return null;
 
 		persisted.setName(company.getName());
-		persisted.setInitials(company.getInitials());
+		persisted.setInitials(company.getInitials().toUpperCase());
 
 		return repository.save(persisted);
 	}
