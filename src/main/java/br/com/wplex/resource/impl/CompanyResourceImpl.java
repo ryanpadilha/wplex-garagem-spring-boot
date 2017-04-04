@@ -22,7 +22,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * The Company Resource REST API.
+ * The Company Resource REST API.<br>
+ * API definition documented by Swagger 2.0.
  * 
  * @author Ryan Padilha <ryan.padilha@wplex.com.br>
  * @since 0.1
@@ -38,8 +39,8 @@ public class CompanyResourceImpl implements CompanyResource {
 
 	@ApiOperation(value = "Retrieves a list of companies", tags = { "company" }, code = 200)
 	@ApiResponses(value = {
-			@ApiResponse(code = 204, message = "No content retrieve", responseContainer = "List", response = Void.class),
-			@ApiResponse(code = 200, message = "Retrieves a list of companies", responseContainer = "List", response = Company.class) })
+			@ApiResponse(code = 200, message = "Retrieves a list of companies", responseContainer = "List", response = Company.class),
+			@ApiResponse(code = 204, message = "No content retrieve", responseContainer = "List", response = Void.class) })
 	@Override
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.GET)
 	public ResponseEntity<List<Company>> list() {
@@ -53,8 +54,8 @@ public class CompanyResourceImpl implements CompanyResource {
 
 	@ApiOperation(value = "Get a company by id", tags = { "company" }, code = 200)
 	@ApiResponses(value = {
-			@ApiResponse(code = 404, message = "Not found retrieve searched by id", response = Void.class),
-			@ApiResponse(code = 200, message = "Retrieve a company searched by id", response = Company.class) })
+			@ApiResponse(code = 200, message = "Retrieve a company searched by id", response = Company.class),
+			@ApiResponse(code = 404, message = "Not found retrieve searched by id", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Company> get(@ApiParam(value = "Company Id", required = true) @PathVariable("id") Long id) {
@@ -66,14 +67,14 @@ public class CompanyResourceImpl implements CompanyResource {
 		return new ResponseEntity<Company>(company, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Create a company entity", tags = { "company" }, code = 201)
+	@ApiOperation(value = "Create a company resource", tags = { "company" }, code = 201)
 	@ApiResponses(value = {
-			@ApiResponse(code = 304, message = "Return a entity not modified", response = Company.class),
-			@ApiResponse(code = 201, message = "Create a new company entity", response = Company.class) })
+			@ApiResponse(code = 201, message = "Create a new company resource", response = Company.class),
+			@ApiResponse(code = 304, message = "Return a resource not modified", response = Company.class) })
 	@Override
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
 	public ResponseEntity<Company> create(
-			@ApiParam(value = "Company json stream entity", name = "company", required = true) @RequestBody Company company) {
+			@ApiParam(value = "Company json stream resource", name = "company", required = true) @RequestBody Company company) {
 		Company persisted = service.insert(company);
 
 		if (null == persisted)
@@ -83,14 +84,14 @@ public class CompanyResourceImpl implements CompanyResource {
 		return new ResponseEntity<Company>(httpHeaders, HttpStatus.CREATED);
 	}
 
-	@ApiOperation(value = "Update a company entity", tags = { "company" }, code = 200)
+	@ApiOperation(value = "Update a company resource", tags = { "company" }, code = 200)
 	@ApiResponses(value = {
-			@ApiResponse(code = 404, message = "Not found retrieve if no update was process", response = Void.class),
-			@ApiResponse(code = 200, message = "Retrieve an update a company entity", response = Company.class) })
+			@ApiResponse(code = 200, message = "Retrieve an update a company resource", response = Company.class),
+			@ApiResponse(code = 404, message = "Not found retrieve if no update was process", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Company> update(@ApiParam(value = "Company Id", required = true) @PathVariable("id") Long id,
-			@ApiParam(value = "Company json stream entity", required = true) @RequestBody Company company) {
+			@ApiParam(value = "Company json stream resource", required = true) @RequestBody Company company) {
 		Company persisted = service.update(id, company);
 
 		if (null == persisted)
@@ -99,13 +100,14 @@ public class CompanyResourceImpl implements CompanyResource {
 		return new ResponseEntity<Company>(persisted, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Delete a company entity", tags = { "company" }, code = 204)
+	@ApiOperation(value = "Delete a company resource", tags = { "company" }, code = 204)
 	@ApiResponses(value = {
-			@ApiResponse(code = 404, message = "Not found retrieve if no delete was process", response = Void.class),
-			@ApiResponse(code = 204, message = "No contente retive, company deleted", response = Company.class) })
+			@ApiResponse(code = 204, message = "No content retrive, deleted company resource", response = Company.class),
+			@ApiResponse(code = 404, message = "Not found retrieve if no delete was process", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Company> delete(@ApiParam(value = "Company Id") @PathVariable("id") Long id) {
+	public ResponseEntity<Company> delete(
+			@ApiParam(value = "Company Id", required = true) @PathVariable("id") Long id) {
 		Company persisted = service.delete(id);
 
 		if (null == persisted)

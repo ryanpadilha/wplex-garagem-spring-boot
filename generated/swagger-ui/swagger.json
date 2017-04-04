@@ -21,7 +21,7 @@
   } ],
   "schemes" : [ "http" ],
   "paths" : {
-    "/api/v1/company/" : {
+    "/api/v1/company" : {
       "get" : {
         "tags" : [ "company" ],
         "summary" : "Retrieves a list of companies",
