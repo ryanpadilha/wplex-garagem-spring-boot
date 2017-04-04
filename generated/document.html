@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<title>API Document</title>
+
+<xmp theme="united" style="display:none;">
+#REST API Documentation for WPLEX REST Library
+
+
+## HTTP://localhost:8080
+
+
+REST Library API for Ximango Resourses
+
+
+[**Contact the developer**](mailto:ryan.padilha@wplex.com.br)
+
+
+**Version** version 1.0
+
+[**Terms of Service**](http://www.wplex.com.br/terms)
+
+[**WPLEX License Terms**](http://www.wplex.com.br/license)
+
+
+
+
+
+
+
+
+
+
+# APIs
+
+
+## /api/v1/company/
+
+
+### GET
+
+<a id="list">Retrieves a list of companies</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+
+
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Retrieves a list of companies | Array[<a href="#/definitions/Company">Company</a>]|
+| 204    | No content retrieve |  - |
+
+
+
+
+
+
+
+### POST
+
+
+<a id="create">Create a company entity</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>company</th>
+    <td>body</td>
+    <td>yes</td>
+    <td>
+        Company json stream entity
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    <a href="#/definitions/Company">Company</a> 
+    </td>
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 201    | Create a new company entity | <a href="#/definitions/Company">Company</a>|
+| 304    | Return a entity not modified | <a href="#/definitions/Company">Company</a>|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /api/v1/company/{id}
+
+
+### GET
+
+<a id="get">Get a company by id</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        Company Id
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>integer (int64)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Retrieve a company searched by id | <a href="#/definitions/Company">Company</a>|
+| 404    | Not found retrieve searched by id |  - |
+
+
+
+
+
+### PUT
+
+<a id="update">Update a company entity</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        Company Id
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>integer (int64)</td>
+    
+
+</tr>
+
+<tr>
+    <th>body</th>
+    <td>body</td>
+    <td>yes</td>
+    <td>
+        Company json stream entity
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    <a href="#/definitions/Company">Company</a> 
+    </td>
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Retrieve an update a company entity | <a href="#/definitions/Company">Company</a>|
+| 404    | Not found retrieve if no update was process |  - |
+
+
+
+
+
+
+
+### DELETE
+
+<a id="delete">Delete a company entity</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        Company Id
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>integer (int64)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 204    | No contente retive, company deleted | <a href="#/definitions/Company">Company</a>|
+| 404    | Not found retrieve if no delete was process |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Definitions
+
+## <a name="/definitions/Company">Company</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>id</td>
+            <td>
+                
+                    
+                    integer (int64)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>created</td>
+            <td>
+                
+                    
+                    string (date-time)
+                
+            </td>
+            <td>required</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>name</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>initials</td>
+            <td>
+                
+                    
+                    string
+                
+            </td>
+            <td>required</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
