@@ -8,17 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.wplex.commons.WebServiceError;
 import br.com.wplex.model.entity.Company;
 import br.com.wplex.resource.CompanyResource;
 import br.com.wplex.service.CompanyService;
@@ -124,17 +119,6 @@ public class CompanyResourceImpl implements CompanyResource {
 			return new ResponseEntity<Company>(HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<Company>(HttpStatus.NO_CONTENT);
-	}
-
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	@ResponseBody
-	public ResponseEntity<WebServiceError> handleValidationException(MethodArgumentNotValidException e) {
-		List<ObjectError> errors = e.getBindingResult().getAllErrors();
-
-		WebServiceError webServiceError = WebServiceError.build(WebServiceError.Type.VALIDATION_ERROR,
-				errors.get(0).getObjectName() + " " + errors.get(0).getDefaultMessage());
-
-		return new ResponseEntity<>(webServiceError, HttpStatus.BAD_REQUEST);
 	}
 
 }

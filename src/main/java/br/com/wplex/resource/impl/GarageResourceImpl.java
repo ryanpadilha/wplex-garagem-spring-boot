@@ -71,7 +71,8 @@ public class GarageResourceImpl implements GarageResource {
 
 	@ApiOperation(value = "Create a garage resource", tags = { "garage" }, code = 201)
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Create a new garage resource", response = Garage.class),
-			@ApiResponse(code = 304, message = "Return a resource not modified", response = Garage.class) })
+			@ApiResponse(code = 304, message = "Return a resource not modified", response = Garage.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Void.class) })
 	@Override
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
 	public ResponseEntity<Garage> create(
@@ -88,6 +89,7 @@ public class GarageResourceImpl implements GarageResource {
 	@ApiOperation(value = "Update a garage resource", tags = { "garage" }, code = 200)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Retrieve an updage garage resource", response = Garage.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = Void.class),
 			@ApiResponse(code = 404, message = "Not found retrieve if no update was process", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
