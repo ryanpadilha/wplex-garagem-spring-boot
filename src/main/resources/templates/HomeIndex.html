@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>WPLEX Garagem | Spring Boot Application</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="Ryan Padilha" />
+
+<!-- Bootstrap core CSS -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<link
+	href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css"
+	rel="stylesheet"></link>
+
+<!-- Custom styles for this template -->
+<link href="http://getbootstrap.com/examples/navbar/navbar.css"
+	rel="stylesheet"></link>
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script
+	src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<div class="container">
+		<nav th:replace="/fragments/menu :: menu"></nav>
+
+		<div class="jumbotron">
+			<header class="jumbotron hero-spacer">
+				<h2>WPLEX Garagem | MVC e REST API</h2>
+				<p>Exemplo prático de projeto desenvolvido com Spring Boot.
+					<br></br>Documentação gerada através de Swagger 2.0.</p>
+				<p>
+					RESTful API disponibiliza através do path <br></br>
+					<strong>http://research-labs:8080/wplex-garagem/v1/</strong>
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" 
+						href="https://github.com/ryanpadilha/wplex-garagem-spring-boot" target="_github">Veja o código-fonte no GitHub</a>
+				</p>
+			</header>
+		</div>
+	</div>
+
+	<div th:replace="/fragments/footer :: footer"></div>
+</body>
+</html>

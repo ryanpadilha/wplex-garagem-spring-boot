@@ -22,4 +22,6 @@ public interface GarageService {
 	Garage update(Long id, Garage garage);
 
 	Garage delete(Long id);
+
+	List<Garage> findByCompanyId(Long id);
 }

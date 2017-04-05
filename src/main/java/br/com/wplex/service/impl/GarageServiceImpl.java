@@ -62,4 +62,9 @@ public class GarageServiceImpl implements GarageService {
 		return persisted;
 	}
 
+	@Override
+	public List<Garage> findByCompanyId(Long id) {
+		return repository.findByCompanyId(id);
+	}
+
 }

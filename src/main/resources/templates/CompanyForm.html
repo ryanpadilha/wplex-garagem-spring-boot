@@ -34,6 +34,7 @@
 
 		<div class="jumbotron">
 			<h3 class="sub-header">Cadastro de Empresa</h3>
+			<p style="font-size: 15px;">POST http://research-labs:8080/wplex-garagem/api/v1/company</p>
 			<form method="POST" th:object="${company}" th:action="@{/company/}" style="margin: 20px 0">
 				<div th:if="${#fields.hasErrors('*')}" class="alert alert-warning fade in alert-dismissable">
 				    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
