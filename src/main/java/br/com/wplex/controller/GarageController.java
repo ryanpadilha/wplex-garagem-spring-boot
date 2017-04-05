@@ -1,5 +1,6 @@
 package br.com.wplex.controller;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.wplex.model.entity.Garage;
@@ -19,7 +20,7 @@ public interface GarageController {
 
 	ModelAndView get(Long id);
 
-	ModelAndView create(Garage garage);
+	ModelAndView create(Garage garage, BindingResult result);
 
 	ModelAndView update(Long id, Garage garage);
 

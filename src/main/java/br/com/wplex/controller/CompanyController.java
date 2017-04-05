@@ -1,5 +1,6 @@
 package br.com.wplex.controller;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.wplex.model.entity.Company;
@@ -19,7 +20,7 @@ public interface CompanyController {
 
 	ModelAndView get(Long id);
 
-	ModelAndView create(Company company);
+	ModelAndView create(Company company, BindingResult result);
 
 	ModelAndView update(Long id, Company company);
 

@@ -2,9 +2,12 @@ package br.com.wplex.controller.impl;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,10 +63,17 @@ public class CompanyControllerImpl implements CompanyController {
 
 	@Override
 	@RequestMapping(value = { "", "/" }, method = RequestMethod.POST)
-	public ModelAndView create(Company company) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/company/");
+	public ModelAndView create(@Valid Company company, BindingResult result) {
+		final String htmlview;
 
-		service.insert(company);
+		if (result.hasErrors()) {
+			htmlview = "CompanyForm";
+		} else {
+			service.insert(company);
+			htmlview = "redirect:/company/";
+		}
+
+		final ModelAndView modelAndView = new ModelAndView(htmlview);
 		return modelAndView;
 	}
 

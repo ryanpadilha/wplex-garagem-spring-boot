@@ -70,6 +70,9 @@
             "schema" : {
               "$ref" : "#/definitions/Company"
             }
+          },
+          "400" : {
+            "description" : "Bad Request"
           }
         }
       }
@@ -127,6 +130,9 @@
             "schema" : {
               "$ref" : "#/definitions/Company"
             }
+          },
+          "400" : {
+            "description" : "Bad Request"
           },
           "404" : {
             "description" : "Not found retrieve if no update was process"
@@ -206,6 +212,9 @@
             "schema" : {
               "$ref" : "#/definitions/Garage"
             }
+          },
+          "400" : {
+            "description" : "Bad Request"
           }
         }
       }
@@ -264,6 +273,9 @@
               "$ref" : "#/definitions/Garage"
             }
           },
+          "400" : {
+            "description" : "Bad Request"
+          },
           "404" : {
             "description" : "Not found retrieve if no update was process"
           }
@@ -299,7 +311,7 @@
   "definitions" : {
     "Company" : {
       "type" : "object",
-      "required" : [ "created", "initials", "name" ],
+      "required" : [ "created" ],
       "properties" : {
         "id" : {
           "type" : "integer",
@@ -323,7 +335,7 @@
     },
     "Garage" : {
       "type" : "object",
-      "required" : [ "created", "initials", "name" ],
+      "required" : [ "created" ],
       "properties" : {
         "created" : {
           "type" : "string",
