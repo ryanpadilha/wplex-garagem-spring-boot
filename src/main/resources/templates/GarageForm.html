@@ -41,18 +41,18 @@
 					<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="font-size: 14px;" />
 				</div>
 				<div class="form-group">
-					<!-- TODO: implementação interrompida neste ponto. 19:59
-					<select th:field="*{companies}">
-					<option th:each="dropDownItem : ${companies}"
-						th:value="${dropDownItem.name}" th:text="${dropDownItem.name}" />
+					<label for="company">Empresa</label>
+					<select id="company" class="form-control" th:field="*{company}">
+					<option th:each="company : ${companies}" th:value="${company.id}" th:text="${company.name}" />
 					</select>
-					-->
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" maxlength="5" placeholder="Sigla" required="required" th:field="*{initials}" />
+					<label for="initials">Sigla</label>
+					<input id="initials" type="text" class="form-control" maxlength="5" required="required" th:field="*{initials}" />
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" maxlength="100" placeholder="Nome" required="required" th:field="*{name}" />
+					<label for="name">Nome</label>
+					<input id="name" type="text" class="form-control" maxlength="100" required="required" th:field="*{name}" />
 				</div>
 				<div class="form-group">
 					<a class="btn btn-default" th:href="@{/garage/}" role="button">Voltar</a>

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,8 +45,10 @@ public class Garage implements Serializable {
 	@Size(max = 5)
 	private String initials;
 
-	public Garage() {
+	@ManyToOne
+	private Company company;
 
+	public Garage() {
 	}
 
 	public Long getId() {
@@ -80,9 +83,18 @@ public class Garage implements Serializable {
 		this.initials = initials;
 	}
 
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	@Override
 	public String toString() {
-		return "Garage [Id=" + Id + ", created=" + created + ", name=" + name + ", initials=" + initials + "]";
+		return "Garage [Id=" + Id + ", created=" + created + ", name=" + name + ", initials=" + initials + ", company="
+				+ company + "]";
 	}
 
 }
