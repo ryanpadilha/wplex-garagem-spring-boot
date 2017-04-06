@@ -43,7 +43,10 @@ public class SearchFormControllerImpl {
 
 	@RequestMapping(value = "/garages", method = RequestMethod.POST)
 	public ModelAndView process(Garage garage) {
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("SearchForm");
+
+		List<Company> companies = service.list();
+		modelAndView.addObject("companies", companies);
 
 		List<Garage> garages = garageService.findByCompanyId(garage.getCompany().getId());
 		modelAndView.addObject("garages", garages);

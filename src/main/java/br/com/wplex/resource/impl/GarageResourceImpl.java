@@ -113,9 +113,23 @@ public class GarageResourceImpl implements GarageResource {
 		Garage persisted = service.delete(id);
 
 		if (null == persisted)
-			return new ResponseEntity<Garage>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@ApiOperation(value = "Search garages by company id", tags = { "garage" }, code = 200)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retrieves a list of garages"),
+			@ApiResponse(code = 404, message = "No content found by id") })
+	@RequestMapping(value = "/search/company/{id}", method = RequestMethod.GET)
+	public ResponseEntity<List<Garage>> findByCompanyId(
+			@ApiParam(value = "Company Id", required = true) @PathVariable("id") Long id) {
+
+		List<Garage> garages = service.findByCompanyId(id);
+		if (garages.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+		return new ResponseEntity<>(garages, HttpStatus.OK);
 	}
 
 }

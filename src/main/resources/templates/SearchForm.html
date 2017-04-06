@@ -34,7 +34,7 @@
 
 		<div class="jumbotron">
 			<h3 class="sub-header">Pesquisar Garagem</h3>
-			<p style="font-size: 15px;">GET http://research-labs:8080/wplex-garagem/api/v1/[]</p>
+			<p style="font-size: 15px;">GET http://research-labs:8080/wplex-garagem/api/v1/garage/search/company/{id}</p>
 			<form method="POST" th:object="${garage}" th:action="@{/search/garages}" style="margin: 20px 0">
 				<div class="form-group">
 					<label for="company">Empresa</label>
@@ -46,7 +46,28 @@
 					<a class="btn btn-default" th:href="@{/}" role="button">Voltar</a>
 					<button type="submit" class="btn btn-primary">Pesquisar</button>
 				</div>
-				
+				<div class="table-responsive" th:if="${not #lists.isEmpty(garages)}">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Inicial</th>
+								<th>Nome</th>
+								<th>Empresa</th>
+								<th>Data de Criação</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="garage : ${garages}">
+								<td th:text="${garage.id}"></td>
+								<td th:text="${garage.initials}"></td>
+								<td th:text="${garage.name}"></td>
+								<td th:text="${garage.company}"></td>
+								<td th:text="${garage.created}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</form>
 		</div>
 	</div>
