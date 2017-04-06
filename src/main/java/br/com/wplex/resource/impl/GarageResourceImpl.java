@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.wplex.model.entity.Garage;
@@ -31,9 +34,9 @@ import io.swagger.annotations.ApiResponses;
  * @since 0.1
  *
  */
-@Api(value = "/api/v1/garage", tags = { "garage" })
+@Api(value = "/api/v1/garages", tags = { "garage" })
 @RestController
-@RequestMapping(value = "/api/v1/garage")
+@RequestMapping(value = "/api/v1/garages")
 public class GarageResourceImpl implements GarageResource {
 
 	@Autowired
@@ -57,14 +60,14 @@ public class GarageResourceImpl implements GarageResource {
 	@ApiOperation(value = "Get a garage by id", tags = { "garage" }, code = 200)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Retrieve a garage searched by id", response = Garage.class),
-			@ApiResponse(code = 404, message = "Not found retrieve searched by id", response = Void.class) })
+			@ApiResponse(code = 204, message = "No content retrieve searched by id", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Garage> get(@ApiParam(value = "Garage Id", required = true) @PathVariable("id") Long id) {
 		Garage garage = service.get(id);
 
 		if (null == garage)
-			return new ResponseEntity<Garage>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Garage>(HttpStatus.NO_CONTENT);
 
 		return new ResponseEntity<Garage>(garage, HttpStatus.OK);
 	}
@@ -127,6 +130,24 @@ public class GarageResourceImpl implements GarageResource {
 
 		List<Garage> garages = service.findByCompanyId(id);
 		if (garages.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+		return new ResponseEntity<>(garages, HttpStatus.OK);
+	}
+
+	@ApiOperation(value = "Search garages and paginating", tags = { "garage" }, code = 200)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Retrieves a list of garages paginated"),
+			@ApiResponse(code = 404, message = "No content found") })
+	@RequestMapping(value = "/search/page", method = RequestMethod.GET)
+	public ResponseEntity<Page<Garage>> getPage(
+			@ApiParam(value = "Number of the page. Default is 0.", name = "page", required = false) @RequestParam(name = "page", defaultValue = "0", required = false) int page,
+			@ApiParam(value = "Limit of the page. Default is 10.", name = "limit", required = false) @RequestParam(name = "limit", defaultValue = "10", required = false) int limit,
+			@ApiParam(value = "Field name of order. Default is name.", name = "order", required = false) @RequestParam(name = "order", defaultValue = "name", required = false) String order,
+			@ApiParam(value = "Sorting flag of filed. Default is ASC [DESC].", name = "direction", required = false) @RequestParam(name = "direction", defaultValue = "ASC", required = false) Sort.Direction direction) {
+
+		Page<Garage> garages = service.findAllByPage(page, limit, order, direction);
+
+		if (null != garages && garages.getContent().isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
 		return new ResponseEntity<>(garages, HttpStatus.OK);

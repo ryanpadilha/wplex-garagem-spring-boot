@@ -33,7 +33,7 @@ REST Library API for Ximango Resourses
 # APIs
 
 
-## /api/v1/company
+## /api/v1/companies
 
 
 ### GET
@@ -153,7 +153,7 @@ REST Library API for Ximango Resourses
 
 
 
-## /api/v1/company/{id}
+## /api/v1/companies/{id}
 
 
 ### GET
@@ -215,7 +215,7 @@ REST Library API for Ximango Resourses
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieve a company searched by id | <a href="#/definitions/Company">Company</a>|
-| 404    | Not found retrieve searched by id |  - |
+| 204    | No content retrieve searched by id |  - |
 
 
 
@@ -378,7 +378,7 @@ REST Library API for Ximango Resourses
 
 
 
-## /api/v1/garage
+## /api/v1/garages
 
 
 ### GET
@@ -498,7 +498,218 @@ REST Library API for Ximango Resourses
 
 
 
-## /api/v1/garage/{id}
+## /api/v1/garages/search/company/{id}
+
+
+### GET
+
+<a id="findByCompanyId">Search garages by company id</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>id</th>
+    <td>path</td>
+    <td>yes</td>
+    <td>
+        Company Id
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>integer (int64)</td>
+    
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Retrieves a list of garages | Array[<a href="#/definitions/Garage">Garage</a>]|
+| 404    | No content found by id |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /api/v1/garages/search/page
+
+
+### GET
+
+<a id="getPage">Search garages and paginating</a>
+
+
+
+
+
+
+
+
+
+#### Request
+
+
+
+##### Parameters
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Required</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Schema</th>
+    </tr>
+
+
+
+<tr>
+    <th>page</th>
+    <td>query</td>
+    <td>no</td>
+    <td>
+        Number of the page. Default is 0.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+<tr>
+    <th>limit</th>
+    <td>query</td>
+    <td>no</td>
+    <td>
+        Limit of the page. Default is 10.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>integer (int32)</td>
+    
+
+</tr>
+
+<tr>
+    <th>order</th>
+    <td>query</td>
+    <td>no</td>
+    <td>
+        Field name of order. Default is name.
+        
+    </td>
+    <td> - </td>
+
+    
+            <td>string </td>
+    
+
+</tr>
+
+<tr>
+    <th>direction</th>
+    <td>body</td>
+    <td>no</td>
+    <td>
+        Sorting flag of filed. Default is ASC [DESC].
+        
+    </td>
+    <td> - </td>
+
+    <td>
+    
+    
+    </td>
+
+</tr>
+
+
+</table>
+
+
+
+#### Response
+
+
+
+
+| Status Code | Reason      | Response Model |
+|-------------|-------------|----------------|
+| 200    | Retrieves a list of garages paginated | <a href="#/definitions/PageGarage">PageGarage</a>|
+| 404    | No content found |  - |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## /api/v1/garages/{id}
 
 
 ### GET
@@ -560,7 +771,7 @@ REST Library API for Ximango Resourses
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieve a garage searched by id | <a href="#/definitions/Garage">Garage</a>|
-| 404    | Not found retrieve searched by id |  - |
+| 204    | No content retrieve searched by id |  - |
 
 
 
@@ -842,6 +1053,19 @@ REST Library API for Ximango Resourses
         </tr>
     
         <tr>
+            <td>company</td>
+            <td>
+                
+                    <a href="#/definitions/Company">Company</a>
+                    
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
             <td>id</td>
             <td>
                 
@@ -853,6 +1077,151 @@ REST Library API for Ximango Resourses
             <td>-</td>
             <td></td>
         </tr>
+    
+</table>
+
+## <a name="/definitions/PageGarage">PageGarage</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
+    
+        <tr>
+            <td>totalElements</td>
+            <td>
+                
+                    
+                    integer (int64)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>totalPages</td>
+            <td>
+                
+                    
+                    integer (int32)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>sort</td>
+            <td>
+                
+                    <a href="#/definitions/Sort">Sort</a>
+                    
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>first</td>
+            <td>
+                
+                    
+                    boolean
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>last</td>
+            <td>
+                
+                    
+                    boolean
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>numberOfElements</td>
+            <td>
+                
+                    
+                    integer (int32)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>size</td>
+            <td>
+                
+                    
+                    integer (int32)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>content</td>
+            <td>
+                
+                
+                    array[<a href="#/definitions/Garage">Garage</a>]
+                
+                
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+        <tr>
+            <td>number</td>
+            <td>
+                
+                    
+                    integer (int32)
+                
+            </td>
+            <td>optional</td>
+            <td>-</td>
+            <td></td>
+        </tr>
+    
+</table>
+
+## <a name="/definitions/Sort">Sort</a>
+
+<table border="1">
+    <tr>
+        <th>name</th>
+        <th>type</th>
+        <th>required</th>
+        <th>description</th>
+        <th>example</th>
+    </tr>
     
 </table>
 

@@ -28,6 +28,15 @@ public class ResourceErrorHandler {
 		this.messageSource = messageSource;
 	}
 
+	@ExceptionHandler(RuntimeException.class)
+	public ResponseEntity<ValidationError> processValidationInternal(RuntimeException e) {
+
+		final ValidationError validationError = ValidationError.build(TypeError.INTERNAL_SERVER_ERROR, 1);
+		validationError.addFieldError("", e.getCause().getLocalizedMessage());
+
+		return new ResponseEntity<>(validationError, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ValidationError> processValidation(MethodArgumentNotValidException e) {
 		final BindingResult result = e.getBindingResult();

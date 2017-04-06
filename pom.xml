@@ -8,7 +8,7 @@
 	<version>0.0.1</version>
 
 	<!-- 2. change de jar packing to war to deploy a webapp :: war -->
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>wplex-garagem</name>
 	<description>WPLEX Garage Project. Spring Boot Application</description>
@@ -55,14 +55,14 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<!-- 
+
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-tomcat</artifactId>
 				</exclusion>
 			</exclusions>
-			 -->
+
 		</dependency>
 
 		<dependency>

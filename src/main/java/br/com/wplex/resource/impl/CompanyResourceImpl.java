@@ -31,9 +31,9 @@ import io.swagger.annotations.ApiResponses;
  * @since 0.1
  *
  */
-@Api(value = "/api/v1/company", tags = { "company" })
+@Api(value = "/api/v1/companies", tags = { "company" })
 @RestController
-@RequestMapping(value = "/api/v1/company")
+@RequestMapping(value = "/api/v1/companies")
 public class CompanyResourceImpl implements CompanyResource {
 
 	@Autowired
@@ -57,14 +57,14 @@ public class CompanyResourceImpl implements CompanyResource {
 	@ApiOperation(value = "Get a company by id", tags = { "company" }, code = 200)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Retrieve a company searched by id", response = Company.class),
-			@ApiResponse(code = 404, message = "Not found retrieve searched by id", response = Void.class) })
+			@ApiResponse(code = 204, message = "No content retrieve searched by id", response = Void.class) })
 	@Override
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Company> get(@ApiParam(value = "Company Id", required = true) @PathVariable("id") Long id) {
 		Company company = service.get(id);
 
 		if (null == company)
-			return new ResponseEntity<Company>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Company>(HttpStatus.NO_CONTENT);
 
 		return new ResponseEntity<Company>(company, HttpStatus.OK);
 	}

@@ -3,6 +3,9 @@ package br.com.wplex.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.wplex.model.entity.Garage;
@@ -65,6 +68,11 @@ public class GarageServiceImpl implements GarageService {
 	@Override
 	public List<Garage> findByCompanyId(Long id) {
 		return repository.findByCompanyId(id);
+	}
+
+	@Override
+	public Page<Garage> findAllByPage(int page, int limit, String order, Sort.Direction direction) {
+		return repository.findAll(new PageRequest(page, limit, new Sort(direction, order)));
 	}
 
 }

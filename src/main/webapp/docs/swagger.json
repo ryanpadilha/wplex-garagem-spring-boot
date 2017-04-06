@@ -23,7 +23,7 @@
   } ],
   "schemes" : [ "http" ],
   "paths" : {
-    "/api/v1/companies" : {
+    "/api/v1/company" : {
       "get" : {
         "tags" : [ "company" ],
         "summary" : "Retrieves a list of companies",
@@ -77,7 +77,7 @@
         }
       }
     },
-    "/api/v1/companies/{id}" : {
+    "/api/v1/company/{id}" : {
       "get" : {
         "tags" : [ "company" ],
         "summary" : "Get a company by id",
@@ -98,8 +98,8 @@
               "$ref" : "#/definitions/Company"
             }
           },
-          "204" : {
-            "description" : "No content retrieve searched by id"
+          "404" : {
+            "description" : "Not found retrieve searched by id"
           }
         }
       },
@@ -165,7 +165,7 @@
         }
       }
     },
-    "/api/v1/garages" : {
+    "/api/v1/garage" : {
       "get" : {
         "tags" : [ "garage" ],
         "summary" : "Retrieves a list of garages",
@@ -219,7 +219,7 @@
         }
       }
     },
-    "/api/v1/garages/search/company/{id}" : {
+    "/api/v1/garage/search/company/{id}" : {
       "get" : {
         "tags" : [ "garage" ],
         "summary" : "Search garages by company id",
@@ -249,55 +249,7 @@
         }
       }
     },
-    "/api/v1/garages/search/page" : {
-      "get" : {
-        "tags" : [ "garage" ],
-        "summary" : "Search garages and paginating",
-        "description" : "",
-        "operationId" : "getPage",
-        "parameters" : [ {
-          "name" : "page",
-          "in" : "query",
-          "description" : "Number of the page. Default is 0.",
-          "required" : false,
-          "type" : "integer",
-          "format" : "int32"
-        }, {
-          "name" : "limit",
-          "in" : "query",
-          "description" : "Limit of the page. Default is 10.",
-          "required" : false,
-          "type" : "integer",
-          "format" : "int32"
-        }, {
-          "name" : "order",
-          "in" : "query",
-          "description" : "Field name of order. Default is name.",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "in" : "body",
-          "name" : "direction",
-          "description" : "Sorting flag of filed. Default is ASC [DESC].",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Retrieves a list of garages paginated",
-            "schema" : {
-              "$ref" : "#/definitions/PageGarage"
-            }
-          },
-          "404" : {
-            "description" : "No content found"
-          }
-        }
-      }
-    },
-    "/api/v1/garages/{id}" : {
+    "/api/v1/garage/{id}" : {
       "get" : {
         "tags" : [ "garage" ],
         "summary" : "Get a garage by id",
@@ -318,8 +270,8 @@
               "$ref" : "#/definitions/Garage"
             }
           },
-          "204" : {
-            "description" : "No content retrieve searched by id"
+          "404" : {
+            "description" : "Not found retrieve searched by id"
           }
         }
       },
@@ -437,51 +389,6 @@
           "format" : "int64"
         }
       }
-    },
-    "PageGarage" : {
-      "type" : "object",
-      "properties" : {
-        "totalElements" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "totalPages" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "sort" : {
-          "$ref" : "#/definitions/Sort"
-        },
-        "first" : {
-          "type" : "boolean",
-          "default" : false
-        },
-        "last" : {
-          "type" : "boolean",
-          "default" : false
-        },
-        "numberOfElements" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "size" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "content" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/Garage"
-          }
-        },
-        "number" : {
-          "type" : "integer",
-          "format" : "int32"
-        }
-      }
-    },
-    "Sort" : {
-      "type" : "object"
     }
   }
 }
