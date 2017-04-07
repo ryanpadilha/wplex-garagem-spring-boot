@@ -37,11 +37,11 @@ public class Company implements Serializable {
 	private Date created = new Date();
 
 	@NotEmpty(message = "Nome deve ser informado.")
-	@Size(max = 100)
+	@Size(min = 1, max = 100)
 	private String name;
 
 	@NotEmpty(message = "Sigla deve ser informada.")
-	@Size(max = 5)
+	@Size(min = 1, max = 5)
 	private String initials;
 
 	public Company() {

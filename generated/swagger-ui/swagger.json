@@ -7,7 +7,7 @@
     "termsOfService" : "http://www.wplex.com.br/terms",
     "contact" : {
       "name" : "Ryan Padilha",
-      "url" : "http",
+      "url" : "https://github.com/ryanpadilha",
       "email" : "ryan.padilha@wplex.com.br"
     },
     "license" : {
@@ -401,12 +401,12 @@
         },
         "name" : {
           "type" : "string",
-          "minLength" : 0,
+          "minLength" : 1,
           "maxLength" : 100
         },
         "initials" : {
           "type" : "string",
-          "minLength" : 0,
+          "minLength" : 1,
           "maxLength" : 5
         }
       }
@@ -421,12 +421,12 @@
         },
         "name" : {
           "type" : "string",
-          "minLength" : 0,
+          "minLength" : 1,
           "maxLength" : 100
         },
         "initials" : {
           "type" : "string",
-          "minLength" : 0,
+          "minLength" : 1,
           "maxLength" : 5
         },
         "company" : {
