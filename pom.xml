@@ -149,7 +149,6 @@
 							<templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
 							<outputPath>${basedir}/generated/document.html</outputPath>
 							<swaggerDirectory>generated/swagger-ui</swaggerDirectory>
-
 						</apiSource>
 					</apiSources>
 				</configuration>
