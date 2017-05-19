@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.wplex.model.entity.Garage;
 import br.com.wplex.repository.GarageRepository;
@@ -35,12 +36,14 @@ public class GarageServiceImpl implements GarageService {
 		return repository.findOne(id);
 	}
 
+	@Transactional
 	@Override
 	public Garage insert(Garage garage) {
 		garage.setInitials(garage.getInitials().toUpperCase());
 		return repository.save(garage);
 	}
 
+	@Transactional
 	@Override
 	public Garage update(Long id, Garage garage) {
 		Garage persisted = repository.findOne(id);
@@ -54,6 +57,7 @@ public class GarageServiceImpl implements GarageService {
 		return repository.save(persisted);
 	}
 
+	@Transactional
 	@Override
 	public Garage delete(Long id) {
 		Garage persisted = repository.findOne(id);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.wplex.model.entity.Company;
 import br.com.wplex.repository.CompanyRepository;
@@ -32,12 +33,14 @@ public class CompanyServiceImpl implements CompanyService {
 		return repository.findOne(id);
 	}
 
+	@Transactional
 	@Override
 	public Company insert(Company company) {
 		company.setInitials(company.getInitials().toUpperCase());
 		return repository.save(company);
 	}
 
+	@Transactional
 	@Override
 	public Company update(Long id, Company company) {
 		Company persisted = repository.findOne(id);
@@ -51,6 +54,7 @@ public class CompanyServiceImpl implements CompanyService {
 		return repository.save(persisted);
 	}
 
+	@Transactional
 	@Override
 	public Company delete(Long id) {
 		Company persisted = repository.findOne(id);

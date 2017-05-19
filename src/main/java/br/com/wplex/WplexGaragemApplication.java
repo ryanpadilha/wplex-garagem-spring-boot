@@ -33,4 +33,5 @@ public class WplexGaragemApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(applicationClass);
 	}
+
 }
