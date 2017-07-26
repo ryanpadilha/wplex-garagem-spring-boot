@@ -16,6 +16,7 @@
     }
   },
   "host" : "localhost:8080",
+  "basePath" : "/wplex-garagem",
   "tags" : [ {
     "name" : "company"
   }, {
@@ -441,13 +442,13 @@
     "PageGarage" : {
       "type" : "object",
       "properties" : {
-        "totalElements" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
         "totalPages" : {
           "type" : "integer",
           "format" : "int32"
+        },
+        "totalElements" : {
+          "type" : "integer",
+          "format" : "int64"
         },
         "sort" : {
           "$ref" : "#/definitions/Sort"
