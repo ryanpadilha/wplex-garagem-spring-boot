@@ -160,10 +160,9 @@
 							<host>localhost:8080</host>
 							<basePath>/${project.name}</basePath>
 							<info>
-								<title>REST API Documentation for WPLEX REST Library</title>
+								<title>REST API Documentation form WPLEX Garamge</title>
 								<version>version 1.0</version>
-								<description>REST Library API for Ximango Resourses</description>
-								
+								<description>REST Library API Endpoints</description>
 								<termsOfService>
 									http://www.wplex.com.br/terms
 								</termsOfService>
