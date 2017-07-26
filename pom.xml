@@ -8,7 +8,7 @@
 	<version>0.0.1</version>
 
 	<!-- 2. change de jar packing to war to deploy a webapp :: war -->
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>wplex-garagem</name>
 	<description>WPLEX Garage Project. Spring Boot Application</description>
@@ -28,6 +28,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<docker.image.prefix>springio</docker.image.prefix>
 	</properties>
 
 	<parent>
@@ -128,6 +129,24 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
+			<!-- tag::plugin[] -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.11</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+            <!-- end::plugin[] -->
 			<plugin>
 				<groupId>com.github.kongchen</groupId>
 				<artifactId>swagger-maven-plugin</artifactId>

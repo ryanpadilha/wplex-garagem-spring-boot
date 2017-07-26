@@ -456,13 +456,13 @@
           "type" : "boolean",
           "default" : false
         },
-        "last" : {
-          "type" : "boolean",
-          "default" : false
-        },
         "numberOfElements" : {
           "type" : "integer",
           "format" : "int32"
+        },
+        "last" : {
+          "type" : "boolean",
+          "default" : false
         },
         "size" : {
           "type" : "integer",
