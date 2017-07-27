@@ -11,7 +11,7 @@
 	<packaging>war</packaging>
 
 	<name>wplex-garagem</name>
-	<description>WPLEX Garage Project. Spring Boot Application</description>
+	<description>WPLEX Garage Project - Spring Boot Application</description>
 
 	<developers>
 		<developer>
@@ -160,7 +160,7 @@
 							<host>localhost:8080</host>
 							<basePath>/${project.name}</basePath>
 							<info>
-								<title>REST API Documentation form WPLEX Garamge</title>
+								<title>REST API Documentation for WPLEX Garagem</title>
 								<version>version 1.0</version>
 								<description>REST Library API Endpoints</description>
 								<termsOfService>

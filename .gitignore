@@ -58,3 +58,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Swagger Documentation ###
+spec/
