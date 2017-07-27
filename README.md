@@ -17,6 +17,7 @@ Swagger 2.0 Documentation on http://localhost:8080/wplex-garagem/api-portal/swag
 
 - Java 1.8 or later.
 - MySQL Server 5.1 or later.
+- Apache Tomcat 9 or later.
 
 ## License
 
