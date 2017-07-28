@@ -37,7 +37,7 @@
 
 		<div class="jumbotron">
 			<h3 class="sub-header">Cadastro de Garagem</h3>
-			<p style="font-size: 15px;">POST http://research-labs:8080/wplex-garagem/api/v1/garage</p>
+			<p style="font-size: 15px;">POST https://wplex-app.herokuapp.com/api/v1/garages</p>
 			<form method="POST" th:object="${garage}" th:action="@{/garage}" style="margin: 20px 0">
 				<div th:if="${#fields.hasErrors('*')}" class="alert alert-warning fade in alert-dismissable">
 				    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>

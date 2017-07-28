@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `wp_company`;
 CREATE TABLE `wp_company` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `initials` varchar(5) NOT NULL,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
@@ -10,7 +10,7 @@ CREATE TABLE `wp_company` (
 DROP TABLE IF EXISTS `wp_garage`;
 CREATE TABLE `wp_garage` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `initials` varchar(5) NOT NULL,
   `name` varchar(100) NOT NULL,
   `company_id` bigint(20) DEFAULT NULL,

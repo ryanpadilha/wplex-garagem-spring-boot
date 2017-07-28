@@ -37,7 +37,7 @@
 
 		<div class="jumbotron">
 			<h3 class="sub-header">Pesquisar Garagem</h3>
-			<p style="font-size: 15px;">GET http://research-labs:8080/wplex-garagem/api/v1/garage/search/company/{id}</p>
+			<p style="font-size: 15px;">GET https://wplex-app.herokuapp.com/api/v1/companies/{id}</p>
 			<form method="POST" th:object="${garage}" th:action="@{/search/garages}" style="margin: 20px 0">
 				<div class="form-group">
 					<label for="company">Empresa</label>

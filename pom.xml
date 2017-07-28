@@ -156,8 +156,8 @@
 							<springmvc>true</springmvc>
 							<locations>br.com.wplex</locations>
 							<schemes>http</schemes>
-							<host>localhost:8080</host>
-							<basePath>/${project.name}</basePath>
+							<host>https://wplex-app.herokuapp.com</host> <!-- http://localhost:8080 -->
+							<basePath></basePath> <!-- /${project.name} -->
 							<info>
 								<title>REST API Documentation for WPLEX Garagem</title>
 								<version>version 1.0</version>
