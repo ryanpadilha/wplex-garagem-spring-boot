@@ -264,7 +264,7 @@
               }
             }
           },
-          "404" : {
+          "204" : {
             "description" : "No content found by id"
           }
         }
