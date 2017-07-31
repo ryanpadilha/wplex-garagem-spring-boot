@@ -270,7 +270,7 @@
         }
       }
     },
-    "/api/v1/garages/search/page" : {
+    "/api/v1/garages/search/page/{pageIndex}" : {
       "get" : {
         "tags" : [ "garage" ],
         "summary" : "Search garages and paginating",
@@ -278,9 +278,9 @@
         "operationId" : "getPage",
         "parameters" : [ {
           "name" : "page",
-          "in" : "query",
-          "description" : "Number of the page. Default is 0.",
-          "required" : false,
+          "in" : "path",
+          "description" : "Number of the page. Default is 1.",
+          "required" : true,
           "type" : "integer",
           "format" : "int32"
         }, {
@@ -312,7 +312,7 @@
               "$ref" : "#/definitions/PageGarage"
             }
           },
-          "404" : {
+          "204" : {
             "description" : "No content found"
           }
         }
@@ -468,13 +468,13 @@
     "PageGarage" : {
       "type" : "object",
       "properties" : {
-        "totalPages" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "totalElements" : {
           "type" : "integer",
           "format" : "int64"
+        },
+        "totalPages" : {
+          "type" : "integer",
+          "format" : "int32"
         },
         "sort" : {
           "$ref" : "#/definitions/Sort"

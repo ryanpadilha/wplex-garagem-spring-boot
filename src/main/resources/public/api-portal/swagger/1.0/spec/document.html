@@ -579,7 +579,7 @@ REST Library API Endpoints
 
 
 
-## /api/v1/garages/search/page
+## /api/v1/garages/search/page/{pageIndex}
 
 
 ### GET
@@ -614,10 +614,10 @@ REST Library API Endpoints
 
 <tr>
     <th>page</th>
-    <td>query</td>
-    <td>no</td>
+    <td>path</td>
+    <td>yes</td>
     <td>
-        Number of the page. Default is 0.
+        Number of the page. Default is 1.
         
     </td>
     <td> - </td>
@@ -690,7 +690,7 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieves a list of garages paginated | <a href="#/definitions/PageGarage">PageGarage</a>|
-| 404    | No content found |  - |
+| 204    | No content found |  - |
 
 
 
@@ -1092,11 +1092,11 @@ REST Library API Endpoints
     </tr>
     
         <tr>
-            <td>totalPages</td>
+            <td>totalElements</td>
             <td>
                 
                     
-                    integer (int32)
+                    integer (int64)
                 
             </td>
             <td>optional</td>
@@ -1105,11 +1105,11 @@ REST Library API Endpoints
         </tr>
     
         <tr>
-            <td>totalElements</td>
+            <td>totalPages</td>
             <td>
                 
                     
-                    integer (int64)
+                    integer (int32)
                 
             </td>
             <td>optional</td>
