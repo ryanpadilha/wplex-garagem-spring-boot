@@ -279,7 +279,7 @@
         "parameters" : [ {
           "name" : "page",
           "in" : "query",
-          "description" : "Number of the page. Default is 1.",
+          "description" : "Number of the page. Default is 0.",
           "required" : false,
           "type" : "integer",
           "format" : "int32"
@@ -466,13 +466,13 @@
     "PageGarage" : {
       "type" : "object",
       "properties" : {
-        "totalElements" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
         "totalPages" : {
           "type" : "integer",
           "format" : "int32"
+        },
+        "totalElements" : {
+          "type" : "integer",
+          "format" : "int64"
         },
         "sort" : {
           "$ref" : "#/definitions/Sort"

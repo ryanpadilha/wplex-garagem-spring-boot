@@ -140,12 +140,11 @@ public class GarageResourceImpl implements GarageResource {
 			@ApiResponse(code = 204, message = "No content found") })
 	@RequestMapping(value = "/search/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Garage>> getPage(
-			@ApiParam(value = "Number of the page. Default is 1.", name = "page", required = false) @RequestParam(name = "index", defaultValue = "0", required = false) int page,
+			@ApiParam(value = "Number of the page. Default is 0.", name = "page", required = false) @RequestParam(name = "index", defaultValue = "0", required = false) int page,
 			@ApiParam(value = "Limit of the page. Default is 10.", name = "limit", required = false) @RequestParam(name = "limit", defaultValue = "10", required = false) int limit,
 			@ApiParam(value = "Field name of order. Default is name.", name = "order", required = false) @RequestParam(name = "order", defaultValue = "name", required = false) String order,
 			@ApiParam(value = "Sorting flag of field. Default is ASC [DESC].", name = "direction", required = false) @RequestParam(name = "direction", defaultValue = "ASC", required = false) String direction) {
-		final Page<Garage> garages = service.findAllByPage((page <= 0 ? 0 : page - 1), limit, order,
-				Sort.Direction.fromString(direction));
+		final Page<Garage> garages = service.findAllByPage(page, limit, order, Sort.Direction.fromString(direction));
 
 		if (null != garages && garages.getContent().isEmpty())
 			return new ResponseEntity<>(new PageImpl<>(Collections.emptyList()), HttpStatus.NO_CONTENT);
