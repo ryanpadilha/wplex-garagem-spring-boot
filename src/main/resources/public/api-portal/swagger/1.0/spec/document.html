@@ -67,7 +67,7 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieves a list of companies | Array[<a href="#/definitions/Company">Company</a>]|
-| 204    | No content retrieve |  - |
+| 204    | No content retrieve, empty list | Array[<a href="#/definitions/Company">Company</a>]|
 
 
 
@@ -137,7 +137,7 @@ REST Library API Endpoints
 |-------------|-------------|----------------|
 | 201    | Create a new company resource | <a href="#/definitions/Company">Company</a>|
 | 304    | Return a resource not modified | <a href="#/definitions/Company">Company</a>|
-| 400    | Bad Request |  - |
+| 400    | Client Bad Request |  - |
 
 
 
@@ -215,7 +215,7 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieve a company searched by id | <a href="#/definitions/Company">Company</a>|
-| 204    | No content retrieve searched by id |  - |
+| 204    | No content retrieve searched by id | <a href="#/definitions/Company">Company</a>|
 
 
 
@@ -296,9 +296,9 @@ REST Library API Endpoints
 
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
-| 200    | Retrieve an update a company resource | <a href="#/definitions/Company">Company</a>|
-| 400    | Bad Request |  - |
-| 404    | Not found retrieve if no update was process |  - |
+| 200    | Retrieve an update company resource | <a href="#/definitions/Company">Company</a>|
+| 400    | Client Bad Request |  - |
+| 404    | Not found retrieve if no update was process | <a href="#/definitions/Company">Company</a>|
 
 
 
@@ -365,7 +365,7 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 204    | No content retrive, deleted company resource | <a href="#/definitions/Company">Company</a>|
-| 404    | Not found retrieve if no delete was process |  - |
+| 404    | Not found retrieve if no delete was process | <a href="#/definitions/Company">Company</a>|
 
 
 
@@ -412,7 +412,7 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieves a list of garages | Array[<a href="#/definitions/Garage">Garage</a>]|
-| 204    | No content retrieve |  - |
+| 204    | No content retrieve | Array[<a href="#/definitions/Garage">Garage</a>]|
 
 
 
@@ -482,7 +482,7 @@ REST Library API Endpoints
 |-------------|-------------|----------------|
 | 201    | Create a new garage resource | <a href="#/definitions/Garage">Garage</a>|
 | 304    | Return a resource not modified | <a href="#/definitions/Garage">Garage</a>|
-| 400    | Bad Request |  - |
+| 400    | Client Bad Request |  - |
 
 
 
@@ -771,7 +771,7 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieve a garage searched by id | <a href="#/definitions/Garage">Garage</a>|
-| 204    | No content retrieve searched by id |  - |
+| 204    | No content retrieve searched by id | <a href="#/definitions/Garage">Garage</a>|
 
 
 
@@ -853,8 +853,8 @@ REST Library API Endpoints
 | Status Code | Reason      | Response Model |
 |-------------|-------------|----------------|
 | 200    | Retrieve an updage garage resource | <a href="#/definitions/Garage">Garage</a>|
-| 400    | Bad Request |  - |
-| 404    | Not found retrieve if no update was process |  - |
+| 400    | Client Bad Request |  - |
+| 404    | Not found retrieve if no update was process | <a href="#/definitions/Garage">Garage</a>|
 
 
 
@@ -1092,11 +1092,11 @@ REST Library API Endpoints
     </tr>
     
         <tr>
-            <td>totalElements</td>
+            <td>totalPages</td>
             <td>
                 
                     
-                    integer (int64)
+                    integer (int32)
                 
             </td>
             <td>optional</td>
@@ -1105,11 +1105,11 @@ REST Library API Endpoints
         </tr>
     
         <tr>
-            <td>totalPages</td>
+            <td>totalElements</td>
             <td>
                 
                     
-                    integer (int32)
+                    integer (int64)
                 
             </td>
             <td>optional</td>
@@ -1144,11 +1144,11 @@ REST Library API Endpoints
         </tr>
     
         <tr>
-            <td>last</td>
+            <td>numberOfElements</td>
             <td>
                 
                     
-                    boolean
+                    integer (int32)
                 
             </td>
             <td>optional</td>
@@ -1157,11 +1157,11 @@ REST Library API Endpoints
         </tr>
     
         <tr>
-            <td>numberOfElements</td>
+            <td>last</td>
             <td>
                 
                     
-                    integer (int32)
+                    boolean
                 
             </td>
             <td>optional</td>

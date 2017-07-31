@@ -1,6 +1,6 @@
 # wplex-garagem-spring-boot
 
-##### Version 0.0.1
+##### Version 0.0.2
 
 WPLEX Garage Project with Spring Boot Application 1.5.<br>
 Demo App running on [https://wplex-app.herokuapp.com/](https://wplex-app.herokuapp.com/)

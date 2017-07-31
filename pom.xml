@@ -5,7 +5,7 @@
 
 	<groupId>br.com.wplex</groupId>
 	<artifactId>wplex-garagem</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<!-- 2. change de jar packing to war to deploy a webapp on external container 
 		:: war -->
