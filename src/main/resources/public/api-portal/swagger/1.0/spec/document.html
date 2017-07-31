@@ -579,7 +579,7 @@ REST Library API Endpoints
 
 
 
-## /api/v1/garages/search/page/{pageIndex}
+## /api/v1/garages/search/page
 
 
 ### GET
@@ -614,8 +614,8 @@ REST Library API Endpoints
 
 <tr>
     <th>page</th>
-    <td>path</td>
-    <td>yes</td>
+    <td>query</td>
+    <td>no</td>
     <td>
         Number of the page. Default is 1.
         
@@ -662,18 +662,17 @@ REST Library API Endpoints
 
 <tr>
     <th>direction</th>
-    <td>body</td>
+    <td>query</td>
     <td>no</td>
     <td>
-        Sorting flag of filed. Default is ASC [DESC].
+        Sorting flag of field. Default is ASC [DESC].
         
     </td>
     <td> - </td>
 
-    <td>
     
+            <td>string </td>
     
-    </td>
 
 </tr>
 
