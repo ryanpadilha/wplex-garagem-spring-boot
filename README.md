@@ -42,6 +42,6 @@ limitations under the License.
 
 ## About the author
 
-[Ryan Padilha](http://ryanpadilha.com.br) is a JavaEE expert, SOA specialist and techinal writter.<br>
+[Ryan Padilha](http://ryanpadilha.com.br) is a JavaEE expert, SOA specialist and technical writter.<br>
 Experience of 12+ years in solution design and development software.<br>
 Working nowadays on Software Architecture, Cloud Computing and Microservices.
