@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * The Garage Entity Model.
- * 
+ *
  * @author Ryan Padilha <ryan.padilha@wplex.com.br>
  * @since 0.1
  *
@@ -30,7 +30,7 @@ public class Garage implements Serializable {
 	private static final long serialVersionUID = -932522159790292048L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 
 	@NotNull

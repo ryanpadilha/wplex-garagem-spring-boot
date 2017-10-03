@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Company Entity Model.
- * 
+ *
  * @author Ryan Padilha <ryan.padilha@wplex.com.br>
  * @since 0.1
  *
@@ -29,7 +29,7 @@ public class Company implements Serializable {
 	private static final long serialVersionUID = 5657929121638852757L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
