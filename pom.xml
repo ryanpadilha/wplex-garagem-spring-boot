@@ -121,6 +121,17 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>*.properties</exclude>
+					<exclude>*.xml</exclude>
+					<exclude>*.sql</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<!-- 1. commnet spring-boot-maven-plugin to generate a war (optional **) -->
 			<plugin>
