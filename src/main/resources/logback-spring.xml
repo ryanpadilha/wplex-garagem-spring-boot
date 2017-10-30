@@ -20,17 +20,17 @@
 	</appender>
 
 	<logger name="org.springframework.jdbc" level="WARN" additivity="false">
-		<!-- <appender-ref ref="Console-Appender" />  -->
+		<appender-ref ref="Console-Appender" />
 		<appender-ref ref="File-Appender" />
 	</logger>
 
 	<logger name="br.com.wplex" level="DEBUG" additivity="false">
-		<!-- <appender-ref ref="Console-Appender" />  -->
+		<appender-ref ref="Console-Appender" />
 		<appender-ref ref="File-Appender" />
 	</logger>
 
 	<root level="ERROR">
-		<!-- <appender-ref ref="Console-Appender" /> -->
+		<appender-ref ref="Console-Appender" />
 		<appender-ref ref="File-Appender" />
 	</root>
 </configuration>
