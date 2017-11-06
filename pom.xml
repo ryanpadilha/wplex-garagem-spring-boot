@@ -274,7 +274,7 @@
 		<repository>
 			<id>central</id>
 			<name>ryan-maquina-3-releases</name>
-			<url>http://192.168.2.66:8081/artifactory/libs-release-local</url>
+        <url>http://192.168.2.66:8081/artifactory/libs-release</url>
 		</repository>
 	</distributionManagement>
 </project>
