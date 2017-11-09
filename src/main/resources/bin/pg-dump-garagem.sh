@@ -64,5 +64,8 @@ fi
 rm -rf $DIR/*.bkp
 find $DIR/ -name "*.tgz" -mtime +7 -type f -exec rm -f {} \;
 
+# AWS S3
+aws s3 sync /opt/backup/postgresql/ s3://garagem-pgdump
+
 echo "PG dump process start at $start_date"
 echo "PG dump process end   at `date +%Y-%m-%d_%H:%M:%S`"
