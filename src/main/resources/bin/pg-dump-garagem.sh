@@ -25,7 +25,7 @@ DIR="/opt/backup/postgresql"
 ERRORLOG="$DIR/pg-error.log"
 ERROR=0;
 
-PG_HOST="localhost"
+PG_HOST="18.231.79.248"
 PG_USER="postgres"
 PG_PASS=$1
 PG_PORT="5492"
