@@ -1,12 +1,15 @@
 #
 # docker-container for Java 8 Application
 #
-# generate-image  : docker build -t wplex/garagem --build-arg VERSION=0.0.2 .
-# run-container   : docker run -d -p 8080:8080 -v /var/wplex/conf/application-garagem.properties:/conf/application.properties --name w_garagem wplex/garagem
-# container-limit : docker run --memory=750m --memory-swap=750m --oom-kill-disable -d -p 8080:8080 -v /var/wplex/conf/application-garagem.properties:/conf/application.properties --name w_garagem_me wplex/garagem
+# generate-image  : docker build -t wplex-garagem --build-arg VERSION=0.0.2 .
+# run-container   : docker run -d -p 8080:8080 -v /var/wplex/conf/application-garagem.properties:/conf/application.properties --name w_garage wplex-garagem
+# container-limit : docker run --memory=750m --memory-swap=750m --oom-kill-disable -d -p 8080:8080 -v /var/wplex/conf/application-garagem.properties:/conf/application.properties --name wplex_garagem wplex-garagem
+#
+# save-image : sudo docker save wplex-garagem > /var/wplex/devops/wplex-garagem-docker.tar
+# load-image : docker load < /var/wplex/devops/wplex-garagem-docker.tar
 #
 
-FROM debian/server-jre8
+FROM wplex/debian-server-jre8
 LABEL maintainer="Ryan Padilha <ryan.padilha@wplex.com.br>"
 
 # define commonly used variables
