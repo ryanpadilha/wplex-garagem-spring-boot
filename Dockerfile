@@ -2,6 +2,9 @@
 # docker-container for Java 8 Application
 #
 # generate-image  : docker build -t wplex-garagem --build-arg VERSION=0.0.2 .
+# tag-image       : docker tag wplex-garagem wplex/wplex-garagem:latest
+# push-image      : docker push wplex/wplex-garagem
+#
 # run-container   : docker run -d -p 8080:8080 -v /var/wplex/conf/application-garagem.properties:/conf/application.properties --name w_garage wplex-garagem
 # container-limit : docker run --memory=750m --memory-swap=750m --oom-kill-disable -d -p 8080:8080 -v /var/wplex/conf/application-garagem.properties:/conf/application.properties --name wplex_garagem wplex-garagem
 #
