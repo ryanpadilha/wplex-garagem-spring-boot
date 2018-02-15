@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
  * The resource error handler for {@link MethodArgumentNotValidException}
- * 
+ *
  * @author Ryan Padilha <ryan.padilha@wplex.com.br>
  * @since 0.1
  *
