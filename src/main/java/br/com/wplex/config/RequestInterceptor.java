@@ -19,23 +19,25 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		String providerSignature = request.getHeader("xf-provider-signature");
+		final String providerSignature = request.getHeader("xf-provider-signature");
 
 		if (StringUtils.isBlank(providerSignature) || !XF_SIGNATURE.equals(providerSignature)) {
-			System.out.println("BadCredentialsException - provider-signature not setup.");
+			// request.getRequestDispatcher("/api/error").
+			// forward(request, response);
+			response.sendError(401, "BadCredentialsException - provider-signature incorrect.");
 			return false;
 		}
 
-		String clientSecret = request.getHeader("xf-client-secret");
-		String apiKey = request.getHeader("xf-api-key");
+		final String clientSecret = request.getHeader("xf-client-secret");
+		final String apiKey = request.getHeader("xf-api-key");
 
 		if (StringUtils.isBlank(clientSecret) || StringUtils.isBlank(apiKey)) {
-			System.out.println("BadCredentialsException - client-secret and api-key not setup");
+			response.sendError(401, "BadCredentialsException - client-secret and api-key not setup.");
 			return false;
 		}
 
 		if (!XF_CLIENT_SECRET.equals(clientSecret) || !XF_API_KEY.equals(apiKey)) {
-			System.out.println("BadCredentialsException - client-secret and api-key incorret.");
+			response.sendError(401, "BadCredentialsException - client-secret and api-key incorret.");
 			return false;
 		}
 
